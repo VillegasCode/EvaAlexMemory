@@ -1,12 +1,21 @@
+table {
+    width: auto;
+}
+
 img {
     width: 100%;
 }
 
 img.portada {
-    width: 70px;
+    width: 100%;
     padding-top: 0em;
     margin-top: -0.2em;
     margin-left: -0.6em;
     margin-right: -0.6em;
     margin-bottom: -0.4em;
+}
+
+button.botones {
+    background-color: white;
+    border: 0em;
 }

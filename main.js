@@ -36,5 +36,11 @@ function contarTiempo() {
     tiempoRegresivoId = setInterval(()=>{
         timer--;
         mostrarTiempo.innerHTML = `Tiempo: ${timer} segundos`;
-    })
+        if (timer == 0) {
+            clearInterval(tiempoRegresivoId);
+            //bloquearTarjetas();
+            //loseAudio.play();
+        }
+    },//1000
+    );
 }

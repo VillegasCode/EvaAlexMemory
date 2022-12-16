@@ -1,0 +1,12 @@
+img {
+    width: 100%;
+}
+
+img.portada {
+    width: 70px;
+    padding-top: 0em;
+    margin-top: -0.2em;
+    margin-left: -0.6em;
+    margin-right: -0.6em;
+    margin-bottom: -0.4em;
+}

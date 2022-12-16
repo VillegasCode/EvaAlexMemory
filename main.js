@@ -1,0 +1,1 @@
+let ocultarBoton = document.getElementById("reiniciar").style.visibility = 'hidden';

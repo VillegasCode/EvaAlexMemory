@@ -23,6 +23,13 @@ let tarjeta1 = null;
 let tarjeta2 = null;
 let tarjetasDestapadas = 0;
 
+//Sounds to the Eva Memory Game
+let winAudio = new Audio('./sounds/win.wav');
+let loseAudio = new Audio('./sounds/lose.wav');
+let clickAudio = new Audio('./sounds/click.wav');
+let rightAudio = new Audio('./sounds/right.wav');
+let wrongAudio = new Audio('./sounds/wrong.wav');
+
 //Create un array with duplicate numbers of total of tales
 let numeros = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13,14,14,15,15];
 
@@ -38,11 +45,10 @@ function contarTiempo() {
         mostrarTiempo.innerHTML = `Tiempo: ${timer} segundos`;
         if (timer == 0) {
             clearInterval(tiempoRegresivoId);
-            //bloquearTarjetas();
-            //loseAudio.play();
+            bloquearTarjetas();
+            loseAudio.play();
         }
-    },//1000
-    );
+    },1000);
 }
 
 //Function bloquearTarjetas

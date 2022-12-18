@@ -44,3 +44,17 @@ function contarTiempo() {
     },//1000
     );
 }
+
+//Function bloquearTarjetas
+function bloquearTarjetas() {
+    for (let i=0; i<=30; i++) {
+        //Obtenemos el objeto del index.html
+        let tarjetaBloqueada = document.getElementById(i);
+        //Al objeto le cambiamos su estado para que muestre la figura
+        tarjetaBloqueada.innerHTML = `<img src=".images/${numeros[i]}.png" alt="">`;
+        //Bloqueamos o desabilitamos la tarjeta
+        tarjetaBloqueada.disabled = true;
+    }
+    //Obtenemos el botón llamado "reiniciar" y lo volvemos visible cada vez que las tarjetas se bloqueen
+    let mostrarBoton = document.getElementById("reiniciar").style.visibility = 'visible';
+}

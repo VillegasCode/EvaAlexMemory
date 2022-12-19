@@ -64,3 +64,44 @@ function bloquearTarjetas() {
     //Obtenemos el botón llamado "reiniciar" y lo volvemos visible cada vez que las tarjetas se bloqueen
     let mostrarBoton = document.getElementById("reiniciar").style.visibility = 'visible';
 }
+
+//We create a MAIN FUNCTION named "destapar" TO SHOW THE TILES
+function destapar(id) {
+    if (temporizador == false) {
+        contarTiempo();
+        temporizador = true;
+    }
+
+    tarjetasDestapadas++;
+    console.log(tarjetasDestapadas);
+
+    if (tarjetasDestapadas == 1) {
+        //Show first number id
+        tarjeta1 = document.getElementById(id);
+        //First button pressed id captures
+        primerResultado = numeros[id];
+        clickAudio.play();
+        tarjeta1.innerHTML = `<img src="./images/${primerResultado}.png">`;
+
+        //Disabling the first button pressed
+        tarjeta1.disabled = true;
+        if (timer == 0) {
+            //Lock tiles calling the function "bloquearTarjetas"
+            bloquearTarjetas();
+        }
+    } else if (tarjetasDestapadas == 2) {
+        //Show second number
+        tarjeta2 = document.getElementById(id);
+        //If time is over then call to bloquearTarjetas function
+        if (timer == 0) {
+            bloquearTarjetas();
+        }
+
+        //If second button is pressed then id is captured
+        segundoResultado = numeros[id];
+        tarjeta2.innerHTML = `<img src="./images/${segundoResultado}.png"`>;
+
+        //Disabling second button
+        tarjeta2.disabled = true;
+    }
+}

@@ -99,7 +99,7 @@ function destapar(id) {
 
         //If second button is pressed then id is captured
         segundoResultado = numeros[id];
-        tarjeta2.innerHTML = `<img src="./images/${segundoResultado}.png"`>;
+        tarjeta2.innerHTML = `<img src="./images/${segundoResultado}.png">`;
 
         //Disabling second button
         tarjeta2.disabled = true;
@@ -126,8 +126,20 @@ function destapar(id) {
     } else {
         //If primerResultado is diferent to segundoResultado then show for a moment their values and come back to hidden
         setTimeout(()=>{
+            //Come back to show their cover cause are diferent
             tarjeta1.innerHTML = `<img class="portada" scr="./images/cover.png">`;
-            
-        })
+            tarjeta2.innerHTML = `<img class="portada" src="./images/cover.png">`;
+            //Come back to their status enabled 'cause they are diferent
+            tarjeta1.disabled = false;
+            tarjeta2.disabled = false;
+            //Come back tarjetasDestapadas to CERO
+            tarjetasDestapadas = 0;
+            //Play audio of wrong
+            wrongAudio.play();
+            //If timer is CERO then call to bloquearTarjetas function
+            if (timer == 0) {
+                bloquearTarjetas();
+            }
+        }, 800);
     }
 }

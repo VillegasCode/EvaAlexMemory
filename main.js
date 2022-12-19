@@ -103,5 +103,31 @@ function destapar(id) {
 
         //Disabling second button
         tarjeta2.disabled = true;
+
+        //Increase movements
+        movimientos++;
+        mostrarMovimientos.innerHTML = `Movimientos: ${movimientos}`;
+
+        //Compare primerResultado with segundoResultado are match
+        if (primerResultado == segundoResultado) {
+            //Reset counter of tarjetasDestapadas
+            tarjetasDestapadas = 0;
+            rightAudio.play();
+
+            //Increase hits
+            aciertos++;
+            mostrarAciertos.innerHTML = `Aciertos: ${aciertos} 👏`;
+            mostrarTiempo.innerHTML = `Fantástico! ⏰ Sólo demoraste ${timerInicial - timer} segundos`;
+            mostrarMovimientos.innerHTML = `Movimientos: ${movimientos} 🤟😎`;
+            //Play to audio when myself won
+            winAudio.play();
+            mostrarBoton = document.getElementById('reiniciar').style.visibility = 'visible';
+        }
+    } else {
+        //If primerResultado is diferent to segundoResultado then show for a moment their values and come back to hidden
+        setTimeout(()=>{
+            tarjeta1.innerHTML = `<img class="portada" scr="./images/cover.png">`;
+            
+        })
     }
 }

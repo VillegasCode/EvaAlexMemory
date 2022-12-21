@@ -7,7 +7,7 @@ img {
 }
 
 img.portada {
-    width: 100%;
+    width: 100px;
     padding-top: 0em;
     margin-top: -0.2em;
     margin-left: -0.6em;
@@ -15,7 +15,22 @@ img.portada {
     margin-bottom: -0.4em;
 }
 
+
+button {
+    height: 100px;
+    width: 100px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 button.botones {
     background-color: white;
     border: 0em;
+}
+
+#reiniciar {
+    width: 200px;
+    height: 50px;
 }

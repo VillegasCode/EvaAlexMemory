@@ -1,3 +1,12 @@
+//Creating variables to save the value of the tales
+let tarjeta1 = null;
+let tarjeta2 = null;
+let tarjetasDestapadas = 0;
+
+//Creating variables to compare first result of a tale with second result fo a tale
+let primerResultado = null;
+let segundoResultado = null;
+
 //Pointing to html document to its IDs with quatotion marks
 let mostrarMovimientos = document.getElementById("movimientos");
 let mostrarAciertos = document.getElementById("aciertos");
@@ -13,15 +22,6 @@ let tiempoRegresivoId = null;
 //Creating variables to ACIERTOS and MOVIMIENTOS
 let aciertos = 0;
 let movimientos = 0;
-
-//Creating variables to compare first result of a tale with second result fo a tale
-let primerResultado = null;
-let segundoResultado = null;
-
-//Creating variables to save the value of the tales
-let tarjeta1 = null;
-let tarjeta2 = null;
-let tarjetasDestapadas = 0;
 
 //Sounds to the Eva Memory Game
 let winAudio = new Audio('./sounds/win.wav');
@@ -53,12 +53,12 @@ function contarTiempo() {
 
 //Function bloquearTarjetas
 function bloquearTarjetas() {
-    for (let i=0; i<=30; i++) {
+    for (let i=0; i<=29; i++) {
         //Obtenemos el objeto del index.html
         let tarjetaBloqueada = document.getElementById(i);
         //Al objeto le cambiamos su estado para que muestre la figura
-        tarjetaBloqueada.innerHTML = `<img src=".images/${numeros[i]}.png" alt="">`;
-        //Bloqueamos o desabilitamos la tarjeta
+        tarjetaBloqueada.innerHTML = `<img src="./images/${numeros[i]}.jpg">`;
+        //Bloqueamos o deshabilitamos la tarjeta
         tarjetaBloqueada.disabled = true;
     }
     //Obtenemos el botón llamado "reiniciar" y lo volvemos visible cada vez que las tarjetas se bloqueen
@@ -81,7 +81,7 @@ function destapar(id) {
         //First button pressed id captures
         primerResultado = numeros[id];
         clickAudio.play();
-        tarjeta1.innerHTML = `<img src="./images/${primerResultado}.png">`;
+        tarjeta1.innerHTML = `<img src="./images/${primerResultado}.jpg">`;
 
         //Disabling the first button pressed
         tarjeta1.disabled = true;
@@ -92,22 +92,20 @@ function destapar(id) {
     } else if (tarjetasDestapadas == 2) {
         //Show second number
         tarjeta2 = document.getElementById(id);
+        //If second button is pressed then id is captured
+        segundoResultado = numeros[id];
+        tarjeta2.innerHTML = `<img src="./images/${segundoResultado}.jpg">`;
+
+        //Disabling second button
+        tarjeta2.disabled = true;
         //If time is over then call to bloquearTarjetas function
         if (timer == 0) {
             bloquearTarjetas();
         }
-
-        //If second button is pressed then id is captured
-        segundoResultado = numeros[id];
-        tarjeta2.innerHTML = `<img src="./images/${segundoResultado}.png">`;
-
-        //Disabling second button
-        tarjeta2.disabled = true;
-
         //Increase movements
         movimientos++;
         mostrarMovimientos.innerHTML = `Movimientos: ${movimientos}`;
-
+    
         //Compare primerResultado with segundoResultado are match
         if (primerResultado == segundoResultado) {
             //Reset counter of tarjetasDestapadas
@@ -117,18 +115,24 @@ function destapar(id) {
             //Increase hits
             aciertos++;
             mostrarAciertos.innerHTML = `Aciertos: ${aciertos} 👏`;
-            mostrarTiempo.innerHTML = `Fantástico! ⏰ Sólo demoraste ${timerInicial - timer} segundos`;
-            mostrarMovimientos.innerHTML = `Movimientos: ${movimientos} 🤟😎`;
-            //Play to audio when myself won
-            winAudio.play();
-            mostrarBoton = document.getElementById('reiniciar').style.visibility = 'visible';
-        }
-    } else {
+            if (aciertos == 15){
+                //Stop the counter
+                clearInterval(tiempoRegresivoId);
+                mostrarAciertos.innerHTML = `Aciertos: ${aciertos} 👏`;
+                mostrarTiempo.innerHTML = `Fantástico! ⏰ Sólo demoraste ${timerInicial - timer} segundos`;
+                mostrarMovimientos.innerHTML = `Movimientos: ${movimientos} 🤟😎`;
+                //Play to audio when myself won
+                winAudio.play();
+                mostrarBoton = document.getElementById('reiniciar').style.visibility = 'visible';
+            }
+        } else {
         //If primerResultado is diferent to segundoResultado then show for a moment their values and come back to hidden
         setTimeout(()=>{
             //Come back to show their cover cause are diferent
             tarjeta1.innerHTML = `<img class="portada" scr="./images/cover.png">`;
             tarjeta2.innerHTML = `<img class="portada" src="./images/cover.png">`;
+            console.log(tarjeta1);
+            console.log(tarjeta2);
             //Come back to their status enabled 'cause they are diferent
             tarjeta1.disabled = false;
             tarjeta2.disabled = false;
@@ -141,5 +145,7 @@ function destapar(id) {
                 bloquearTarjetas();
             }
         }, 800);
+        
     }
+}
 }

@@ -1,5 +1,5 @@
 //Creating variables to save the value of the tales
-let tarjeta1 = null;
+let tarjetaUNO = null;
 let tarjeta2 = null;
 let tarjetasDestapadas = 0;
 
@@ -14,8 +14,8 @@ let mostrarTiempo = document.getElementById("t-restante");
 let ocultarBoton = document.getElementById("reiniciar").style.visibility = 'hidden';
 
 //Creating variables to count time
-let timer = 30;
-let timerInicial = 30;
+let timer = 60;
+let timerInicial = 60;
 let temporizador = false;
 let tiempoRegresivoId = null;
 
@@ -57,7 +57,7 @@ function bloquearTarjetas() {
         //Obtenemos el objeto del index.html
         let tarjetaBloqueada = document.getElementById(i);
         //Al objeto le cambiamos su estado para que muestre la figura
-        tarjetaBloqueada.innerHTML = `<img src="./images/${numeros[i]}.jpg">`;
+        tarjetaBloqueada.innerHTML = `<img src="./images/${numeros[i]}.png">`;
         //Bloqueamos o deshabilitamos la tarjeta
         tarjetaBloqueada.disabled = true;
     }
@@ -76,15 +76,17 @@ function destapar(id) {
     console.log(tarjetasDestapadas);
 
     if (tarjetasDestapadas == 1) {
+        //Play the 1st audio to begin
+        clickAudio.play();
         //Show first number id
-        tarjeta1 = document.getElementById(id);
+        tarjetaUNO = document.getElementById(id);
         //First button pressed id captures
         primerResultado = numeros[id];
-        clickAudio.play();
-        tarjeta1.innerHTML = `<img src="./images/${primerResultado}.jpg">`;
+        
+        tarjetaUNO.innerHTML = `<img src="./images/${primerResultado}.png">`;
 
         //Disabling the first button pressed
-        tarjeta1.disabled = true;
+        tarjetaUNO.disabled = true;
         if (timer == 0) {
             //Lock tiles calling the function "bloquearTarjetas"
             bloquearTarjetas();
@@ -94,7 +96,7 @@ function destapar(id) {
         tarjeta2 = document.getElementById(id);
         //If second button is pressed then id is captured
         segundoResultado = numeros[id];
-        tarjeta2.innerHTML = `<img src="./images/${segundoResultado}.jpg">`;
+        tarjeta2.innerHTML = `<img src="./images/${segundoResultado}.png">`;
 
         //Disabling second button
         tarjeta2.disabled = true;
@@ -126,16 +128,18 @@ function destapar(id) {
                 mostrarBoton = document.getElementById('reiniciar').style.visibility = 'visible';
             }
         } else {
-        //If primerResultado is diferent to segundoResultado then show for a moment their values and come back to hidden
+            //If primerResultado is diferent to segundoResultado then show for a moment their values and come back to hidden
         setTimeout(()=>{
-            //Come back to show their cover cause are diferent
-            tarjeta1.innerHTML = `<img class="portada" scr="./images/cover.png">`;
-            tarjeta2.innerHTML = `<img class="portada" src="./images/cover.png">`;
-            console.log(tarjeta1);
-            console.log(tarjeta2);
             //Come back to their status enabled 'cause they are diferent
-            tarjeta1.disabled = false;
+            tarjetaUNO.disabled = false;
             tarjeta2.disabled = false;
+            
+            //Come back to show their cover cause are diferent
+            tarjetaUNO.innerHTML = `<img class="portada" scr="./images/30.png">`;
+            tarjeta2.innerHTML = `<img class="portada" src="./images/cover.png">`;
+            console.log(tarjetaUNO);
+            console.log(tarjeta2);
+            
             //Come back tarjetasDestapadas to CERO
             tarjetasDestapadas = 0;
             //Play audio of wrong

@@ -135,7 +135,8 @@ function destapar(id) {
             tarjeta2.disabled = false;
             
             //Come back to show their cover cause are diferent
-            tarjetaUNO.innerHTML = `<img class="portada" scr="./images/30.png">`;
+            //tarjetaUNO.innerHTML = `<img class="portada" scr="./images/cover.png">`;
+            tarjetaUNO.innerHTML = `<img class="portada" src="./images/cover.png">`;
             tarjeta2.innerHTML = `<img class="portada" src="./images/cover.png">`;
             console.log(tarjetaUNO);
             console.log(tarjeta2);

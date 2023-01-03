@@ -113,7 +113,8 @@ function destapar(id) {
             //Reset counter of tarjetasDestapadas
             tarjetasDestapadas = 0;
             rightAudio.play();
-
+            //10+ like bonus
+            timer = timer + 10;
             //Increase hits
             aciertos++;
             mostrarAciertos.innerHTML = `Aciertos: ${aciertos} 👏`;
@@ -121,7 +122,7 @@ function destapar(id) {
                 //Stop the counter
                 clearInterval(tiempoRegresivoId);
                 mostrarAciertos.innerHTML = `Aciertos: ${aciertos} 👏`;
-                mostrarTiempo.innerHTML = `Fantástico! ⏰ Sólo demoraste ${timerInicial - timer} segundos`;
+                mostrarTiempo.innerHTML = `Fantástico! ⏰ TE SOBRÓ ${timer} segundos`;
                 mostrarMovimientos.innerHTML = `Movimientos: ${movimientos} 🤟😎`;
                 //Play to audio when myself won
                 winAudio.play();

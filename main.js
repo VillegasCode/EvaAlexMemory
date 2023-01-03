@@ -14,7 +14,7 @@ let mostrarTiempo = document.getElementById("t-restante");
 let ocultarBoton = document.getElementById("reiniciar").style.visibility = 'hidden';
 
 //Creating variables to count time
-let timer = 50;
+let timer = 40;
 let temporizador = false;
 let tiempoRegresivoId = null;
 
@@ -135,7 +135,6 @@ function destapar(id) {
             tarjeta2.disabled = false;
             
             //Come back to show their cover cause are diferent
-            //tarjetaUNO.innerHTML = `<img class="portada" scr="./images/cover.png">`;
             tarjetaUNO.innerHTML = `<img class="portada" src="./images/cover.png">`;
             tarjeta2.innerHTML = `<img class="portada" src="./images/cover.png">`;
             console.log(tarjetaUNO);

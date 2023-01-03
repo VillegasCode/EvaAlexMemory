@@ -13,13 +13,19 @@ main{
     align-items: center;
 }
 
+h1 {
+    text-align: center;
+}
+
 table {
     width: auto;
+    border: 0px;
 }
 
 img {
     width: 100%;
     height: 85%;
+    border: 0px;
 }
 
 img.portada {
@@ -30,12 +36,14 @@ img.portada {
     margin-left: -0.6em;
     margin-right: -0.6em;
     margin-bottom: -0.4em;
+    border: 0px;
 }
 
 
 button {
-    height: 69px;
-    width: 69px;
+    height: 70px;
+    width: 70px;
+    border: 0px;
 }
 
 button:hover {
@@ -44,7 +52,11 @@ button:hover {
 
 button.botones {
     background-color: rgb(255, 255, 255);
-    border: 0em;
+    border: 0px;
+}
+
+.section1{
+    border: 0px;
 }
 
 .section2{

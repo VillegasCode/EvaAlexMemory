@@ -1,3 +1,18 @@
+body{
+    /* Se usa esta página para generar gradientes https://cssgradient.io/ */
+        /* background: rgb(63, 94, 251);
+        background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,7,107,1) 100%); */
+        font-family: sans-serif;
+        color: rgb(255, 255, 255);
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    }
+
+main{
+    display: grid;
+    align-items: center;
+}
+
 table {
     width: auto;
 }
@@ -19,8 +34,8 @@ img.portada {
 
 
 button {
-    height: 80px;
-    width: 80px;
+    height: 69px;
+    width: 69px;
 }
 
 button:hover {
@@ -28,11 +43,38 @@ button:hover {
 }
 
 button.botones {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border: 0em;
+}
+
+.section2{
+    text-align: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 90%;
+    height: 230px;
+    padding: 0 20px;
+}
+
+.estadisticas{
+    align-items: center;
+    border: 2px solid white;
+    height: 50px;
+    border-radius: 8px;
+    padding: 8px 20px;
+    box-sizing: border-box;
+}
+
+.footer {
+    text-align: center;
 }
 
 #reiniciar {
     width: 200px;
     height: 30px;
+    font-size: large;
+    align-items: center;
+    align-self: center;
 }

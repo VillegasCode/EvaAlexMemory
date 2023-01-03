@@ -14,8 +14,7 @@ let mostrarTiempo = document.getElementById("t-restante");
 let ocultarBoton = document.getElementById("reiniciar").style.visibility = 'hidden';
 
 //Creating variables to count time
-let timer = 60;
-let timerInicial = 60;
+let timer = 50;
 let temporizador = false;
 let tiempoRegresivoId = null;
 

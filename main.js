@@ -148,7 +148,7 @@ function destapar(id) {
             if (timer == 0) {
                 bloquearTarjetas();
             }
-        }, 800);
+        }, 1100);
         
     }
 }

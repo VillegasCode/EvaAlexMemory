@@ -121,7 +121,7 @@ function destapar(id) {
                 //Stop the counter
                 clearInterval(tiempoRegresivoId);
                 mostrarAciertos.innerHTML = `Aciertos: ${aciertos} 👏`;
-                mostrarTiempo.innerHTML = `Fantástico! ⏰ TE SOBRÓ ${timer} segundos`;
+                mostrarTiempo.innerHTML = `Fantástico! ⏰ TE SOBRÓ ${timer} segundos ¡GANASTE!`;
                 mostrarMovimientos.innerHTML = `Movimientos: ${movimientos} 🤟😎`;
                 //Play to audio when myself won
                 winAudio.play();

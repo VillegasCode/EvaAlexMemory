@@ -1,3 +1,20 @@
+//Creating variables of date for compare
+    let fecha = new Date()
+    let anio_actual = fecha.getUTCFullYear();
+    let mes_actual = fecha.getMonth() + 1;
+    let dia_actual = fecha.getDate();
+    let fecha_aniversario = new Date("2016/5/4");
+
+    let hoy = new Date(mes_actual + "/" + dia_actual + "/" + anio_actual);
+        //let edad = parseInt(anio_actual - anio_nacimiento);
+        let tiempoJuntos = new Date(hoy.getDate() - fecha_aniversario.getDate());
+        
+        document.write('<p>' + hoy + '</p>');
+        document.write('<p>' + fecha_aniversario + '</p>');
+        document.write('<p>' + tiempoJuntos + '</p>');
+        document.write('<p>' + Math.round(tiempoJuntos/(1000*60*60*24)) + '</p>');
+
+
 //Creating variables to save the value of the tales
 let tarjetaUNO = null;
 let tarjeta2 = null;

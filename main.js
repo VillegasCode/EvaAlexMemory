@@ -1,24 +1,3 @@
-//Creating variables of date for compare
-    let fecha = new Date()
-    let anio_actual = fecha.getUTCFullYear();
-    let mes_actual = fecha.getMonth() + 1;
-    let dia_actual = fecha.getDate();
-    let fecha_aniversario = new Date("2016/5/4");
-
-    let hoy = new Date(mes_actual + "/" + dia_actual + "/" + anio_actual);
-        
-        let tiempoJuntos = hoy.getFullYear() - fecha_aniversario.getFullYear();
-        let mes = hoy.getMonth() - fecha_aniversario.getMonth();
-        if (mes < 0 || (mes === 0 && hoy.getDate() < fecha_aniversario.getDate())){
-            tiempoJuntos--;
-            mes = 12 + mes;
-        }
-        document.write('<p>' + hoy + '</p>');
-        document.write('<p>' + fecha_aniversario + '</p>');
-        document.write('<p>' + tiempoJuntos + ' años y ' + mes + ' meses' + '</p>');
-        document.write('<p>' + mes + '</p>');
-
-
 //Creating variables to save the value of the tales
 let tarjetaUNO = null;
 let tarjeta2 = null;
@@ -33,9 +12,11 @@ let mostrarMovimientos = document.getElementById("movimientos");
 let mostrarAciertos = document.getElementById("aciertos");
 let mostrarTiempo = document.getElementById("t-restante");
 let ocultarBoton = document.getElementById("reiniciar").style.visibility = 'hidden';
+let tiempoJuntos = document.getElementById("tiempoAtuLado");
+let estadoDelJuego = document.getElementById("statusOFgame");
 
 //Creating variables to count time
-let timer = 40;
+let timer = 50;
 let temporizador = false;
 let tiempoRegresivoId = null;
 
@@ -58,6 +39,24 @@ numeros = numeros.sort(()=>{return Math.random()-0.5});
 //Write in console the numeros array of random way
 console.log(numeros);
 
+//Creating variables of date for compare
+let fecha = new Date()
+let anio_actual = fecha.getUTCFullYear();
+let mes_actual = fecha.getMonth() + 1;
+let dia_actual = fecha.getDate();
+let fecha_aniversario = new Date("2016/05/04");
+let hoy = new Date(mes_actual + "/" + dia_actual + "/" + anio_actual);
+
+let diferenciaTiempo = hoy.getFullYear() - fecha_aniversario.getFullYear();
+    let mes = mes_actual - parseInt(fecha_aniversario.getMonth() + 1);
+    let dia = dia_actual - fecha_aniversario.getDate();
+    
+    if (mes < 0 || (mes === 0 && hoy.getDate() < fecha_aniversario.getDate())){
+        diferenciaTiempo--;
+        mes = 12 + mes;
+    }
+    tiempoJuntos.innerHTML = `${diferenciaTiempo} años con ${mes} meses y ${dia} días juntos😍, a tu lado todo es hermoso 👫‍`;
+
 //Function to count time
 function contarTiempo() {
     tiempoRegresivoId = setInterval(()=>{
@@ -67,6 +66,7 @@ function contarTiempo() {
             clearInterval(tiempoRegresivoId);
             bloquearTarjetas();
             loseAudio.play();
+            estadoDelJuego.innerHTML = `Feliz Aniversario Amor❤️, no todo sale perfecto,🤗solo hay que volver a intentarlo 😘`;
         }
     },1000);
 }
@@ -143,6 +143,7 @@ function destapar(id) {
                 clearInterval(tiempoRegresivoId);
                 mostrarAciertos.innerHTML = `Aciertos: ${aciertos} 👏`;
                 mostrarTiempo.innerHTML = `Fantástico! ⏰ TE SOBRÓ ${timer} segundos ¡GANASTE!`;
+                estadoDelJuego.innerHTML = `Feliz Aniversario Amor❤️🥳¡GANASTE! TE AMO 😘`;
                 mostrarMovimientos.innerHTML = `Movimientos: ${movimientos} 🤟😎`;
                 //Play to audio when myself won
                 winAudio.play();

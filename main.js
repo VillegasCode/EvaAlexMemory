@@ -6,13 +6,17 @@
     let fecha_aniversario = new Date("2016/5/4");
 
     let hoy = new Date(mes_actual + "/" + dia_actual + "/" + anio_actual);
-        //let edad = parseInt(anio_actual - anio_nacimiento);
-        let tiempoJuntos = new Date(hoy.getDate() - fecha_aniversario.getDate());
         
+        let tiempoJuntos = hoy.getFullYear() - fecha_aniversario.getFullYear();
+        let mes = hoy.getMonth() - fecha_aniversario.getMonth();
+        if (mes < 0 || (mes === 0 && hoy.getDate() < fecha_aniversario.getDate())){
+            tiempoJuntos--;
+            mes = 12 + mes;
+        }
         document.write('<p>' + hoy + '</p>');
         document.write('<p>' + fecha_aniversario + '</p>');
-        document.write('<p>' + tiempoJuntos + '</p>');
-        document.write('<p>' + Math.round(tiempoJuntos/(1000*60*60*24)) + '</p>');
+        document.write('<p>' + tiempoJuntos + ' años y ' + mes + ' meses' + '</p>');
+        document.write('<p>' + mes + '</p>');
 
 
 //Creating variables to save the value of the tales
